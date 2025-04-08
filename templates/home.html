@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Fire Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            width: 300px;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <h2>Forest Fire Prediction</h2>
+    <form action="{{ url_for('predict_data') }}" method="POST">
+        <label>Temperature:</label>
+        <input type="text" name="temp" required><br>
+    
+        <label>Relative Humidity:</label>
+        <input type="text" name="rh" required><br>
+    
+        <label>Wind Speed:</label>
+        <input type="text" name="ws" required><br>
+    
+        <label>Rain:</label>
+        <input type="text" name="rain" required><br>
+    
+        <label>FFMC:</label>
+        <input type="text" name="ffmc" required><br>
+    
+        <label>DMC:</label>
+        <input type="text" name="dmc" required><br>
+    
+        <label>ISI:</label>
+        <input type="text" name="isi" required><br>
+    
+        <label>Classes:</label>
+        <input type="text" name="classes" required><br>
+    
+        <label>Region:</label>
+        <input type="text" name="region" required><br>
+    
+        <button type="submit">Predict</button>
+    </form>
+    
+    {% if prediction %}
+        <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+    
+</body>
+</html>
